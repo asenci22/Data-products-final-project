@@ -1,0 +1,34 @@
+---
+title: "Final project"
+author: "as"
+date: "2023-12-17"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Overview
+
+In the final project, I imported the R built-in dataset **mtcars**.
+
+- The user is instructed to enclose some data points from the graph in order to have a subset which will be modeled with a line.
+- The results of the model, namely the slope and the intercept of the line, are shown on the side panel and can be dynamically changed.
+
+## Preview of the data
+
+```{r mtcars, echo = TRUE}
+head(mtcars)
+```
+
+We want to see how the weight of the car influences its miles per gallon. If the car has more weight, it should travel fewer miles with one gallon of gas.
+
+##
+
+```{r}
+plot(mtcars$wt, mtcars$mpg, xlab = "Weight (1000 lbs)", ylab = "Miles per gallon")
+model <- lm(mpg~wt, data = mtcars)
+abline(model, col = "blue", lwd = 2)
+print(model$coefficients)
+```
